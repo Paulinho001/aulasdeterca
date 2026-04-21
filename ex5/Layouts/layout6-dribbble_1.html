@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout 6 - Dribbble</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { width: 1280px; background: #fff; }
+ 
+    /* ── HEADER ── */
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 60px;
+      border-bottom: 1px solid #eee; background: #fff;
+    }
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .logo {
+      font-size: 20px; font-weight: 800; color: #ea4c89;
+      letter-spacing: -0.5px; cursor: pointer;
+    }
+    .search-bar {
+      display: flex; align-items: center; gap: 0;
+      border: 1.5px solid #e0e0e0; border-radius: 24px;
+      overflow: hidden; background: #f8f8f8;
+    }
+    .search-input {
+      border: none; background: transparent;
+      padding: 8px 14px; font-size: 13px; color: #555;
+      width: 200px; outline: none;
+    }
+    .search-divider { width: 1px; height: 20px; background: #ddd; }
+    .search-tag {
+      padding: 6px 12px; font-size: 13px; color: #333;
+      cursor: pointer; display: flex; align-items: center; gap: 4px;
+    }
+    .search-tag span { font-size: 10px; color: #999; }
+    .search-btn {
+      width: 34px; height: 34px; margin: 2px;
+      background: #ea4c89; border: none; border-radius: 50%;
+      color: #fff; font-size: 15px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+ 
+    .header-nav { display: flex; align-items: center; gap: 22px; }
+    .nav-item {
+      font-size: 14px; color: #444; font-weight: 500;
+      cursor: pointer; display: flex; align-items: center; gap: 3px;
+    }
+    .nav-item span { font-size: 10px; color: #999; }
+ 
+    .header-right { display: flex; align-items: center; gap: 12px; }
+    .btn-ghost { background: none; border: none; font-size: 14px; color: #444; cursor: pointer; font-weight: 500; }
+    .btn-dark {
+      padding: 9px 18px; background: #0d0d0d; border: none;
+      border-radius: 8px; color: #fff; font-size: 14px;
+      font-weight: 600; cursor: pointer;
+    }
+ 
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex; align-items: center; gap: 0;
+      padding: 12px 24px; border-bottom: 1px solid #f0f0f0;
+      background: #fafafa;
+    }
+    .filter-dropdown {
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border: 1.5px solid #e0e0e0;
+      border-radius: 6px; font-size: 13px; color: #333;
+      cursor: pointer; margin-right: 20px; background: #fff;
+    }
+    .filter-dropdown span { font-size: 10px; color: #999; }
+ 
+    .filter-tabs { display: flex; gap: 0; flex: 1; }
+    .filter-tab {
+      padding: 7px 14px; font-size: 13px; color: #666;
+      cursor: pointer; border-bottom: 2px solid transparent;
+      font-weight: 500; white-space: nowrap;
+    }
+    .filter-tab.active { color: #0d0d0d; border-bottom-color: #0d0d0d; font-weight: 700; }
+    .filter-tab:hover { color: #0d0d0d; }
+ 
+    .filter-right { margin-left: auto; }
+    .btn-filter {
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border: 1.5px solid #e0e0e0;
+      border-radius: 6px; font-size: 13px; color: #333;
+      cursor: pointer; background: #fff;
+    }
+ 
+    /* ── GALLERY GRID ── */
+    main { padding: 24px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+ 
+    .gallery-card { display: flex; flex-direction: column; gap: 10px; cursor: pointer; }
+    .gallery-card:hover .card-image { transform: scale(1.02); }
+ 
+    .card-image {
+      width: 100%; height: 200px;
+      object-fit: cover; border-radius: 10px;
+      display: block; transition: transform 0.2s;
+      border: 1px solid #f0f0f0;
+    }
+ 
+    .card-meta { display: flex; justify-content: space-between; align-items: center; }
+    .card-author { display: flex; align-items: center; gap: 7px; }
+    .author-avatar {
+      width: 22px; height: 22px; border-radius: 50%;
+      object-fit: cover; display: block; flex-shrink: 0;
+      border: 1px solid #eee;
+    }
+    .author-name { font-size: 12px; color: #444; font-weight: 500; }
+    .author-badge {
+      font-size: 10px; background: #f5a623; color: #fff;
+      padding: 1px 5px; border-radius: 3px; font-weight: 700;
+    }
+    .card-stats { display: flex; gap: 10px; align-items: center; }
+    .stat { font-size: 12px; color: #999; display: flex; align-items: center; gap: 3px; }
+  </style>
+</head>
+<body>
+ 
+  <header>
+    <div class="header-left">
+      <div class="logo">Dribbble</div>
+      <div class="search-bar">
+        <input class="search-input" type="text" placeholder="What are you looking for?">
+        <div class="search-divider"></div>
+        <div class="search-tag">Shots <span>▾</span></div>
+        <button class="search-btn">🔍</button>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="nav-item">Explore <span>▾</span></div>
+      <div class="nav-item">Hire a Designer <span>▾</span></div>
+      <div class="nav-item">Find Jobs</div>
+      <div class="nav-item">Blog</div>
+    </nav>
+    <div class="header-right">
+      <button class="btn-ghost">Sign up</button>
+      <button class="btn-dark">Log in</button>
+    </div>
+  </header>
+ 
+  <div class="filter-bar">
+    <div class="filter-dropdown">Popular <span>▾</span></div>
+    <div class="filter-tabs">
+      <div class="filter-tab active">Discover</div>
+      <div class="filter-tab">Animation</div>
+      <div class="filter-tab">Branding</div>
+      <div class="filter-tab">Illustration</div>
+      <div class="filter-tab">Mobile</div>
+      <div class="filter-tab">Print</div>
+      <div class="filter-tab">Product Design</div>
+      <div class="filter-tab">Typography</div>
+      <div class="filter-tab">Web Design</div>
+    </div>
+    <div class="filter-right">
+      <button class="btn-filter">⚙ Filters</button>
+    </div>
+  </div>
+ 
+  <main>
+    <div class="gallery-grid">
+ 
+      <!-- Card 1 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=400&h=300&fit=crop" alt="Arboris Logo">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Deividas B.</span>
+            <span class="author-badge">PRO</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 90</span>
+            <span class="stat">👁 13.1k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 2 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop" alt="Triangle Logo">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Alfrey Davilla</span>
+            <span class="author-badge">PRO</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 79</span>
+            <span class="stat">👁 13.1k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 3 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="Tides Illustration">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Kendrick Kidd</span>
+            <span class="author-badge">PRO</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 61</span>
+            <span class="stat">👁 6.6k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 4 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=400&h=300&fit=crop" alt="ST Monogram">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Lucas Fields</span>
+            <span class="author-badge">PRO</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 57</span>
+            <span class="stat">👁 5.2k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 5 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&h=300&fit=crop" alt="App UI">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Nixtio</span>
+            <span class="author-badge" style="background:#4a90d9">TEAM</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 193</span>
+            <span class="stat">👁 11.9k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 6 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop" alt="Timecut Logo">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Slavisa D.</span>
+            <span class="author-badge">PRO</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 55</span>
+            <span class="stat">👁 4k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 7 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop" alt="BoxC Branding">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Focus Lab</span>
+            <span class="author-badge" style="background:#4a90d9">TEAM</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 47</span>
+            <span class="stat">👁 5.9k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 8 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=300&fit=crop" alt="Stamps Design">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Aleksandar S.</span>
+            <span class="author-badge">PRO</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 44</span>
+            <span class="stat">👁 4.1k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 9 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&h=300&fit=crop" alt="Abstract Art">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Maria Costa</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 38</span>
+            <span class="stat">👁 3.2k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 10 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Color Palette">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">João Silva</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 29</span>
+            <span class="stat">👁 2.7k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 11 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop" alt="Typography">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Ana Lima</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 51</span>
+            <span class="stat">👁 4.8k</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 12 -->
+      <div class="gallery-card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=400&h=300&fit=crop" alt="Geometric Design">
+        <div class="card-meta">
+          <div class="card-author">
+            <img class="author-avatar" src="https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?w=40&h=40&fit=crop" alt="avatar">
+            <span class="author-name">Pedro Matos</span>
+          </div>
+          <div class="card-stats">
+            <span class="stat">♥ 33</span>
+            <span class="stat">👁 2.1k</span>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </main>
+ 
+</body>
+</html>

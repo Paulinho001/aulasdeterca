@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout 5 - Lista de Notícias</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { width: 700px; background: #fff; }
+ 
+    .news-list { display: flex; flex-direction: column; }
+ 
+    .news-item {
+      display: flex; gap: 18px;
+      padding: 22px 0; border-bottom: 1px solid #e5e5e5;
+      align-items: flex-start;
+    }
+    .news-item:last-child { border-bottom: none; }
+ 
+    .news-thumb {
+      width: 220px; height: 148px;
+      flex-shrink: 0; object-fit: cover;
+      border-radius: 4px;
+    }
+ 
+    .news-content { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+ 
+    .news-category {
+      font-size: 12px; font-weight: 600; color: #888;
+      text-transform: lowercase; letter-spacing: 0.3px;
+    }
+ 
+    .news-title {
+      font-size: 18px; font-weight: 700; color: #1a9e3f;
+      line-height: 1.35; cursor: pointer;
+    }
+    .news-title:hover { text-decoration: underline; }
+ 
+    .news-summary { font-size: 13px; color: #555; line-height: 1.5; }
+ 
+    .news-meta { font-size: 12px; color: #999; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="news-list">
+ 
+      <div class="news-item">
+        <img class="news-thumb"
+             src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=260&fit=crop"
+             alt="noticia 1">
+        <div class="news-content">
+          <span class="news-category">futebol</span>
+          <h2 class="news-title">Luis Roberto se afasta para tratamento médico e fica fora de transmissões da Copa do Mundo</h2>
+          <p class="news-summary">Narrador é diagnosticado com neoplasia na região cervical</p>
+          <span class="news-meta">Há 13 minutos — Em futebol</span>
+        </div>
+      </div>
+ 
+      <div class="news-item">
+        <img class="news-thumb"
+             src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&h=260&fit=crop"
+             alt="noticia 2">
+        <div class="news-content">
+          <span class="news-category">flamengo</span>
+          <h2 class="news-title">Jardim tem cinco desfalques e fará mudanças para estreia na Libertadores</h2>
+          <p class="news-summary">Equipe rubro-negra enfrenta o Cusco nesta quarta-feira, às 21h30, a 3.350 metros acima do nível do mar</p>
+          <span class="news-meta">Há 9 minutos — Em flamengo</span>
+        </div>
+      </div>
+ 
+      <div class="news-item">
+        <img class="news-thumb"
+             src="https://images.unsplash.com/photo-1434648957308-5e6a859697e8?w=400&h=260&fit=crop"
+             alt="noticia 3">
+        <div class="news-content">
+          <span class="news-category">fluminense</span>
+          <h2 class="news-title">Fábio se torna o jogador mais velho a atuar na Libertadores</h2>
+          <p class="news-summary">Aos 45 anos, jogador supera boliviano Luis Galarza, que mantinha recorde desde 1995</p>
+          <span class="news-meta">Há 8 minutos — Em fluminense</span>
+        </div>
+      </div>
+ 
+    </div>
+  </main>
+</body>
+</html>

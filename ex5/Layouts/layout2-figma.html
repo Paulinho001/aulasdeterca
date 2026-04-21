@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout 2 - Figma</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { width: 1280px; background: #fff; }
+ 
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 64px;
+      background: #fff; border-bottom: 1px solid #e8e8e8;
+    }
+    .header-left { display: flex; align-items: center; gap: 36px; }
+    .logo-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: linear-gradient(135deg, #f24e1e 0% 25%, #ff7262 25% 50%, #1abcfe 50% 75%, #0acf83 75%);
+    }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-item {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 14px; color: #333; cursor: pointer; font-weight: 500;
+    }
+    .nav-item span { font-size: 11px; color: #888; }
+    .header-right { display: flex; align-items: center; gap: 12px; }
+    .btn-ghost { padding: 8px 16px; background: transparent; border: none; font-size: 14px; cursor: pointer; color: #333; }
+    .btn-outline {
+      padding: 9px 18px; background: transparent;
+      border: 1.5px solid #111; border-radius: 6px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+    }
+    .btn-dark {
+      padding: 9px 18px; background: #111; border: none;
+      border-radius: 6px; color: #fff; font-size: 14px; font-weight: 600; cursor: pointer;
+    }
+ 
+    main { display: flex; height: calc(100vh - 64px); overflow: hidden; }
+ 
+    .hero-left {
+      width: 52%; display: flex; flex-direction: column;
+      justify-content: center; padding: 60px 56px; gap: 28px;
+    }
+    .hero-left h1 { font-size: 56px; font-weight: 800; color: #111; line-height: 1.1; }
+    .hero-left p { font-size: 16px; color: #444; line-height: 1.7; max-width: 500px; }
+    .hero-actions { display: flex; gap: 14px; margin-top: 8px; }
+    .action-btn-dark {
+      padding: 14px 24px; background: #111; border: none;
+      border-radius: 6px; color: #fff; font-size: 15px;
+      font-weight: 600; cursor: pointer;
+    }
+    .action-btn-outline {
+      padding: 14px 24px; background: transparent;
+      border: 1.5px solid #111; border-radius: 6px;
+      font-size: 15px; font-weight: 600; cursor: pointer;
+    }
+ 
+    .hero-right {
+      width: 48%; background: #fafafa;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 24px; overflow: hidden; padding: 24px;
+      border-left: 1px solid #eee;
+    }
+    .hero-right img {
+      width: 88%; height: 85%;
+      object-fit: cover; border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="logo-icon"></div>
+      <nav class="nav-links">
+        <div class="nav-item">Produtos <span>▾</span></div>
+        <div class="nav-item">Soluções <span>▾</span></div>
+        <div class="nav-item">Comunidade <span>▾</span></div>
+        <div class="nav-item">Recursos <span>▾</span></div>
+        <div class="nav-item">Preços</div>
+      </nav>
+    </div>
+    <div class="header-right">
+      <button class="btn-ghost">Entrar</button>
+      <button class="btn-outline">Fale com a equipe de vendas</button>
+      <button class="btn-dark">Comece sem custos</button>
+    </div>
+  </header>
+  <main>
+    <section class="hero-left">
+      <h1>Figma Design</h1>
+      <p>O Figma é uma ferramenta de design poderosa e colaborativa para equipes. Explore ideias e obtenha feedback, crie protótipos realistas e otimize o desenvolvimento de produtos com design systems. O Figma Design está incluído no acesso Full em todos os planos.</p>
+      <div class="hero-actions">
+        <button class="action-btn-dark">Comece agora</button>
+        <button class="action-btn-outline">Fale com a equipe de vendas</button>
+      </div>
+    </section>
+    <section class="hero-right">
+      <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=700&h=600&fit=crop" alt="Figma design shapes">
+    </section>
+  </main>
+</body>
+</html>
